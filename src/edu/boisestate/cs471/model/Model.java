@@ -176,8 +176,14 @@ public final class Model {
      * @return An array of algorithm display names.
      */
     public String[] getAllAlgorithmNames() {
-        final Stream<String> map = mAlgorithms.stream().map(alg -> alg.getName(mLanguage));
-        return map.toArray(String[]::new);
+        List<String> listOfAlgorithmNames=new ArrayList<>();
+
+        for (SortingAlgorithm algorithm : mAlgorithms)
+        {
+            listOfAlgorithmNames.add(algorithm.getName(mLanguage));
+        }
+
+        return listOfAlgorithmNames.toArray(new String[listOfAlgorithmNames.size()]);
     }
 
     /**
